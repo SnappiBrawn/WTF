@@ -7,7 +7,7 @@ class Connection {
         if (Connection::$connect === NULL) {
             // connect to the database
             $host = "localhost";
-			$database = "fiesta_db";
+			$database = "wtfDB";
 			$username = "root";
 			$password = "";
 
