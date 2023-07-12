@@ -2,7 +2,7 @@
 class DB {
 
     private static $host = "localhost";
-    private static $database = "fiesta_db";
+    private static $database = "wtfDB";
     private static $username = "root";
     private static $password = "";
     
