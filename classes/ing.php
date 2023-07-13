@@ -11,14 +11,22 @@ class ing {
 
     public function __construct($var) {
         $con = Connection::getInstance();
-        $ingredient = $con->query("select * from ingredients where ing_ID=".$var)->fetch();
-        $this->id=$ingredient[0];
-        $this->name=$ingredient[1];
-        $this->unit=$ingredient[2];
-        $this->owner=$ingredient[3];
-        $this->desc=$ingredient[4];
-        $this->img=$ingredient[5];
-        $this->link=$ingredient[6];
+        try{
+            $ingredient = $con->query("select * from ingredients where ing_ID='".$var."'")->fetch();
+            if(gettype($ingredient)=="boolean"){
+                throw new Exception("Does not exist");
+            }
+            $this->id=$ingredient[0];
+            $this->name=$ingredient[1];
+            $this->unit=$ingredient[2];
+            $this->owner=$ingredient[3];
+            $this->desc=$ingredient[4];
+            $this->img=$ingredient[5];
+            $this->link=$ingredient[6];
+        }
+        catch(Exception $e){
+            echo("");
+        }
     }
 
     public function __toString(){

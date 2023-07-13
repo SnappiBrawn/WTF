@@ -1,14 +1,14 @@
 <?php 
 
 include_once("classes/Connection.php");
-include_once("classes/ing.php");
+include_once("classes/rep.php");
 
 if(!isset($_GET["id"])){
     $error = "Wait a minute,.....How did you get here?";
     echo "alert(".$error.")";
 }
 else{
-    $ing = new ing($_GET["id"]);
+    $rep = new rep($_GET["id"]);
 
 }
 
@@ -62,21 +62,21 @@ else{
         <div class="container content">
             <div class="row">
                 <div class="col-sm-4">
-                    <img src=<?php echo $ing->getImg()." alt=".$ing;?> >
+                    <img src=<?php echo "recipes/".$rep->getImg()." alt='".$rep."'";?> >
                 </div>
                 <div class="col-sm-8 main-content">
-                    <h2><?php echo $ing?></h2>
-                    <h3>Posted By: <?php echo $ing->getOwner()?></h3>
-                    <h3>Unit of Measurement: <?php echo $ing->getUnit();?></h3>
-                    <h3>Popularly used in:</h3>
+                    <h2><?php echo $rep?></h2>
+                    <h3>Posted By: <?php echo $rep->getOwner();?></h3>
+                    <h3>Approximate Preparation Time: <?php echo $rep->getTime();?>hrs</h3>
+                    <h3>List of Ingredients:</h3>
                     <h4>
                         <ul>
                         <?php 
-                        $items = explode(" ", $ing->getLink());
+                        $items = explode(" ", $rep->getIngredients());
                         foreach (array_slice($items,0,4) as $i){
                             $con = Connection::getInstance();
-                            $name = $con->query("select rep_Name, rep_Id from recipes where rep_Id='".$i."'")->fetch();
-                            echo "<li><a href=recipe.php?id=".$name[1].">".$name[0]."</a></li>";
+                            $name = $con->query("select ing_Name, ing_Id from ingredients where ing_Id='".$i."'")->fetch();
+                            echo "<li><a href=ingredient.php?id=".$name[1].">".$name[0]."</a></li>";
                         }
                         ?>
                         </ul>
@@ -84,7 +84,7 @@ else{
                 </div>
             </div>
             <div class="content-description">
-                <?php echo"<p>".$ing->getDesc()."</p>"?>
+                <?php echo"<p>".$rep->getDesc()."</p>"?>
             </div>
             <?php endif; ?>
         </div>

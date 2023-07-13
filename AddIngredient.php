@@ -8,8 +8,6 @@ if(!isset($_GET["id"])){
     echo "alert(".$error.")";
 }
 else{
-    $ing_id=$_GET["id"];
-
 }
 
 ?>

@@ -1,3 +1,7 @@
+<?php
+  $_SESSION['pantry']=[];
+?>
+
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -8,6 +12,8 @@
   <body>
   <?php include 'utils/styles.php' ?>
   <?php include 'utils/header.php' ?>
+  <?php include 'utils/pantry.php' ?>
+  
     <div class="s006">
       <form>
         <fieldset>
@@ -25,5 +31,6 @@
         </fieldset>
       </form>
     </div>
+    <div style="height:1000px; background-color: white;"/>
   </body>
 </html>
