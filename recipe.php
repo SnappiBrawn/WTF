@@ -15,7 +15,7 @@ else{
 ?>
 <html>
     <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>WTF | Ingredient</title>
+        <title>WTF | <?php echo $rep;?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="https://fonts.googleapis.com/css?family=Poppins:400,800" rel="stylesheet" />
         <?php include 'utils/styles.php' ?>
@@ -50,6 +50,7 @@ else{
             }
             .content-description{
                 padding: 3%;
+                font-size: x-large;
             }
         </style>
     
@@ -65,7 +66,7 @@ else{
                     <img src=<?php echo "recipes/".$rep->getImg()." alt='".$rep."'";?> >
                 </div>
                 <div class="col-sm-8 main-content">
-                    <h2><?php echo $rep?></h2>
+                    <h1><?php echo $rep?></h1>
                     <h3>Posted By: <?php echo $rep->getOwner();?></h3>
                     <h3>Approximate Preparation Time: <?php echo $rep->getTime();?>hrs</h3>
                     <h3>List of Ingredients:</h3>
@@ -86,7 +87,36 @@ else{
             <div class="content-description">
                 <?php echo"<p>".$rep->getDesc()."</p>"?>
             </div>
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <?php $media = explode(" ",$rep->getGallery());
+                    for ($index = 0; $index < count($media)-1; $index++) {
+                        ?>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src=<?php echo "recipes/".$media[$index]." alt=".$media[$index];?>>
+                        </div>
+                    <?php }?>
+                        <div class="carousel-item active">
+                            <img class="d-block w-100" src=<?php echo "recipes/".$media[$index]." alt=".$media[$index];?>>
+                        </div>
+                </div>
+                    <?php if (count($media) > 1) { ?>
+                    <a class="carousel-control-prev" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                    <?php }?>
+                    </a>
+            </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+            <!-- add slideshow
+            add like-dislike -->
             <?php endif; ?>
+            <?php include("utils/footer.php"); ?>
         </div>
     </body>
 </html>
