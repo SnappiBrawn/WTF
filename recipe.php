@@ -5,7 +5,6 @@ include_once("classes/rep.php");
 
 if(!isset($_GET["id"])){
     $error = "Wait a minute,.....How did you get here?";
-    echo "alert(".$error.")";
 }
 else{
     $rep = new rep($_GET["id"]);
@@ -111,12 +110,10 @@ else{
                     <?php }?>
                     </a>
             </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
-            <!-- add slideshow
-            add like-dislike -->
             <?php endif; ?>
-            <?php include("utils/footer.php"); ?>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
         </div>
+        <?php include("utils/footer.php"); ?>
     </body>
 </html>

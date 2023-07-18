@@ -1,7 +1,3 @@
-<?php
-session_start();
-array_push($_SESSION['pantry'],"blah");
-?>
 
 <style>
   .pantry{
@@ -17,6 +13,7 @@ array_push($_SESSION['pantry'],"blah");
     overflow-y: scroll;
     box-shadow: 0px 0px 10px black;  
     scrollbar-width: none;
+    z-index: 10;
   }
   .pantry::-webkit-scrollbar {
     width: 5px;
@@ -44,13 +41,13 @@ array_push($_SESSION['pantry'],"blah");
   }
 </style>
 <script>
-  function remove(e){
-    var mark_for_delete = document.getElementById(e);
-    mark_for_delete.parentNode.removeChild(mark_for_delete);
+  function remove(id){
+    var element = document.querySelector("#"+id);
+    element.parentNode.removeChild(element);
+    fetchRecipes();
   }
 </script>
 <div class="pantry">
   <center><b>My Pantry</b></center>
-  <ul>
-  </ul>
+  <ul></ul>
 </div>
