@@ -157,5 +157,19 @@ body{
       height: 26px;
     }
   }
-  
+/* dropdown suggestions formatting */
+.search-dropdown{
+  background-color: white;
+  border-radius: 20px;
+  width: 90%;
+  margin: auto;
+} 
+.suggestions{
+  list-style: none;
+  color: forestgreen;
+}
+.suggestions > li{
+  padding: 10px;
+  cursor: pointer;
+}
   

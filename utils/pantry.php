@@ -1,3 +1,8 @@
+<?php
+session_start();
+array_push($_SESSION['pantry'],"blah");
+?>
+
 <style>
   .pantry{
     position: fixed;
@@ -38,18 +43,14 @@
     cursor: pointer;
   }
 </style>
+<script>
+  function remove(e){
+    var mark_for_delete = document.getElementById(e);
+    mark_for_delete.parentNode.removeChild(mark_for_delete);
+  }
+</script>
 <div class="pantry">
   <center><b>My Pantry</b></center>
   <ul>
-    <?php 
-      if (sizeof($_SESSION['pantry'])){
-        for($i=0; $i<sizeof($_SESSION['pantry']); $i++){
-          echo "<li>".$_SESSION['pantry'][$i]."<span class='float-right' value=".$_SESSION['pantry'][$i]." onclick='remove(e)'>&#10006</span></li>";
-        }
-      }
-      else{
-        echo "<p align=center>Search for ingredients to add them to your pantry</p>";
-      }
-    ?>
   </ul>
 </div>
