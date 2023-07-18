@@ -36,7 +36,7 @@
             <a class="nav-link" aria-current="page" href="index.php">Home</a>
           </li>
           <li class="nav-item p-1 white">
-            <a class="nav-link" aria-current="page" href="AllRecipes.php">Recipes</a>
+            <a class="nav-link" aria-current="page" href="ViewRecipes.php">Recipes</a>
           </li>
           <li class="nav-item p-1 white">
             <a class="nav-link" aria-current="page" href="#adoptions">Submit A Recipe</a>

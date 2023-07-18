@@ -6,7 +6,7 @@ $conn = Connection::getInstance();
 $items = $_POST["fetchfor"];
 
 if($items == ""){
-    $res = $conn->query("select * from recipes order by rep_Likes");
+    $res = $conn->query("select * from recipes order by rep_Likes desc");
     $list = [];
     foreach($res as $rep){
         array_push($list,$rep);
@@ -17,7 +17,7 @@ else{
     $items = explode(",", $_POST["fetchfor"]);
     $list = [];
     foreach($items as $item){
-        $qry = "select * from recipes where FIND_IN_SET('".$item."',rep_Ingredients)";
+        $qry = "select * from recipes where FIND_IN_SET('".$item."',rep_Ingredients) order by rep_Likes desc";
         $res=$conn->query($qry);
         foreach($res as $rep){
             array_push($list,$rep);

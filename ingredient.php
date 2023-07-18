@@ -15,7 +15,7 @@ else{
 ?>
 <html>
     <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>WTF | Ingredient</title>
+        <title>WTF | Ingredient - <?php echo $ing ?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="https://fonts.googleapis.com/css?family=Poppins:400,800" rel="stylesheet" />
         <?php include 'utils/styles.php' ?>

@@ -14,7 +14,7 @@ else{
 ?>
 <html>
     <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>WTF | <?php echo $rep;?></title>
+        <title>WTF | Recipe - <?php echo $rep;?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="https://fonts.googleapis.com/css?family=Poppins:400,800" rel="stylesheet" />
         <?php include 'utils/styles.php' ?>
@@ -72,8 +72,8 @@ else{
                     <h4>
                         <ul>
                         <?php 
-                        $items = explode(" ", $rep->getIngredients());
-                        foreach (array_slice($items,0,4) as $i){
+                        $items = explode(",", $rep->getIngredients());
+                        foreach ($items as $i){
                             $con = Connection::getInstance();
                             $name = $con->query("select ing_Name, ing_Id from ingredients where ing_Id='".$i."'")->fetch();
                             echo "<li><a href=ingredient.php?id=".$name[1].">".$name[0]."</a></li>";
