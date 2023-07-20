@@ -1,9 +1,9 @@
 <hr class = "footerline"><!--css modified horizontal line-->
 <footer>
-    <div class = "container">
-        <div class = "row">
-            <section class="col-lg-7">
-                <div class = "footerContent"><!--left content-->
+    <div class = "container p-0 align-middle">
+        <div class = "row p-0 align-middle">
+            <section class="col-lg-4 align-middle m-auto">
+                <div class = "footerContent">
                     <p class = "footerContent1" style="font-family:monospace">
                         <strong>A</A></strong><span class = "small footerSubtext">dvancing through</span><br>
                         <strong>I</strong><span class = "small footerSubtext">nnovation and</span><br>
@@ -15,8 +15,25 @@
                     </p>
                 </div>
             </section>
-            <section class="col-lg-5">
-                <div class = "footcontent" ><!--middle content-->
+            <section class="col-lg-3 text-center m-auto">
+                <h3>Site Navgation</h3>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link p-0" href="index.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link p-0" href="ViewRecipes.php">Recipes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link p-0" href="#adoptions">Submit A Recipe</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link p-0" href="#foundation">Submit An Ingredient</a>
+                </li>
+                </ul>
+            </section>
+            <section class="col-lg-5 m-auto">
+                <div class = "footcontent text-right" >
                 "Copyright © 2023 Bangalore University. All rights reserved. No part of this website may be reproduced, distributed, or transmitted in any form, without the prior written permission of the owner, except for certain noncommercial uses permitted by copyright law. For permission requests, write to the publisher at kswaroophere@gmail.com."
                 </div>
             </section>

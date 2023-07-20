@@ -1,7 +1,7 @@
 /* Globals */
 
 *{
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
     box-sizing: border-box;
 }
 
@@ -172,4 +172,33 @@ body{
   padding: 10px;
   cursor: pointer;
 }
+
+/* footer styles */
+footer { 
+  font-family: 'Montserrat', sans-serif;
+  color: #E0E0E0;
+  line-height: 2;
+  background-color: #001825;
+  padding-top: 20px;
+}
+
+.footerContent > .footerContent1 {
+  font-size: 35px;
+  line-height: 1.5;
+  margin:0
+}
+
+.footerSubtext {
+  color: #95a5a6;
+}
+
+.footerContent > .footerSubtext2 {
+  color: #95a5a6;
+  font-size: 14px;
+}
+
+.footcontent {
+  color: #E0E0E0;
+}
+/*  */
   
