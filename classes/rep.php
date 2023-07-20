@@ -5,6 +5,7 @@ class rep {
     private string $name;
     private $owner;
     private $time;
+    private $morals;
     private $desc;
     private $ingredients;
     private $img;
@@ -22,11 +23,12 @@ class rep {
             $this->name=$recipe[1];
             $this->owner=$recipe[2];
             $this->time=$recipe[3];
-            $this->desc=$recipe[4];
-            $this->ingredients=$recipe[5];
-            $this->img=$recipe[6];
-            $this->gallery=$recipe[7];
-            $this->likes=$recipe[8];
+            $this->morals=$recipe[4];
+            $this->desc=$recipe[5];
+            $this->ingredients=$recipe[6];
+            $this->img=$recipe[7];
+            $this->gallery=$recipe[8];
+            $this->likes=$recipe[9];
         }
         catch(Exception $e){
             echo("");
@@ -40,6 +42,7 @@ class rep {
 
     public function getOwner(){return $this->owner;}
     public function getTime(){return $this->time;}
+    public function getMorals(){return $this->morals;}
     public function getDesc(){return $this->desc;}
     public function getImg(){return $this->img;}
     public function getIngredients(){return $this->ingredients;}

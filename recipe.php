@@ -62,12 +62,12 @@ else{
         <div class="container content">
             <div class="row">
                 <div class="col-sm-4">
-                    <img src=<?php echo "recipes/".$rep->getImg()." alt='".$rep."'";?> >
+                    <img src=<?php echo $rep->getImg()." alt='".$rep."'";?> >
                 </div>
                 <div class="col-sm-8 main-content">
                     <h1><?php echo $rep?></h1>
                     <h3>Posted By: <?php echo $rep->getOwner();?></h3>
-                    <h3>Approximate Preparation Time: <?php echo $rep->getTime();?>hrs</h3>
+                    <h3>Approximate Preparation Time: <?php echo $rep->getTime();?>mins</h3>
                     <h3>List of Ingredients:</h3>
                     <h4>
                         <ul>

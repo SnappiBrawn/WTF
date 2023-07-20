@@ -18,14 +18,10 @@
             return;
           }
         }
-        pantry.innerHTML+=("<li id='"+e.target.getAttribute('value')+"'>"+e.target.innerHTML+"<span class='float-right' onclick=remove_pantry('"+e.target.getAttribute('value')+"')>&#10006</span></li>");
+        pantry.innerHTML+=("<li id='"+e.target.getAttribute('value')+"'>"+e.target.innerHTML+"<span class='float-right' onclick=remove('"+e.target.getAttribute('value')+"')>&#10006</span></li>");
         fetchRecipes();
       }
-      function remove_pantry(id){
-        var element = document.querySelector("#"+id);
-        element.parentNode.removeChild(element);
-        fetchRecipes();
-      }
+      
       function finding(target){
         if(target.length<2){
           document.querySelector(".suggestions").innerHTML="";
