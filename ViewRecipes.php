@@ -1,7 +1,9 @@
 <!-- recipes page -->
 <?php 
+session_start();
 include_once("classes/Connection.php");
 include_once("classes/rep.php");
+
 ?>
 <html>
     <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -104,10 +106,10 @@ include_once("classes/rep.php");
             </div>
             <div class="filters">
                 <b>Filters:</b>
-                <label for="veg-filter">Vegetarian Only</label>
-                <input type="checkbox" name="veg-filter" id="veg-filter" onchange="filter_validate(event)"></input>
-                <label for="nonveg-filter">Non-Vegetarian Only</label>
+                <label for="nonveg-filter">Vegetarian Only</label>
                 <input type="checkbox" name="nonveg-filter" id="nonveg-filter" onchange="filter_validate(event)"></input>
+                <label for="veg-filter">Non-Vegetarian Only</label>
+                <input type="checkbox" name="veg-filter" id="veg-filter" onchange="filter_validate(event)"></input>
             </div>
         </div>
         <div class="container">

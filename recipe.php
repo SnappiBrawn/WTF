@@ -8,7 +8,6 @@ if(!isset($_GET["id"])){
 }
 else{
     $rep = new rep($_GET["id"]);
-
 }
 
 ?>
@@ -17,6 +16,7 @@ else{
         <title>WTF | Recipe - <?php echo $rep;?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="https://fonts.googleapis.com/css?family=Poppins:400,800" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         <?php include 'utils/styles.php' ?>
         <?php include 'utils/header.php' ?>
         <style>
@@ -28,6 +28,7 @@ else{
                 cursor: pointer;
             }
             .content{
+                margin-top: 10px;
                 border: 1px lightgreen solid;
                 border-radius: 10px;
                 box-shadow: 0px 0px 5px lightgreen;
@@ -51,11 +52,40 @@ else{
                 padding: 3%;
                 font-size: x-large;
             }
+            .like{
+                border: 2px solid darkorchid;
+                background-color: pink;
+                border-radius: 5px;
+                color: darkorchid;
+                cursor: pointer;
+                padding: 5px;
+                margin-left:55%; 
+                font-size: 2rem;
+            }
+            .like:hover > span{
+                color: red;
+                transition-duration: 0.2s;
+                text-shadow: 0px 0px 5px red;
+            }
         </style>
-    
+        <script>
+            function like(){
+                if(<?php echo $_SESSION["loggedin"];?>){
+                    //like and add recipe to faves
+                }
+                else{
+                    document.querySelector("#login-modal").style.display = block;
+                }
+            }
+        </script>
     </head>
     <body>
-        <div style="padding:100 0 0 5%; font-size:3rem"><span class="back-arrow" onclick="history.back()">🔙</span></div>
+        <div style="display: flex; padding:100 0 0 5%; font-size:3rem">
+        <span class="back-arrow" onclick="history.back()">🔙</span>
+            <div class="like" onclick='like()'>
+            Add recipe to favourites&nbsp<span><i class="fas fa-heart"></i>&nbsp</span>
+            </div>
+        </div>
         <?php if(isset($error)): ?>
             <p>Wait a minute,.....How did you get here?</p>
         <?php else: ?>
