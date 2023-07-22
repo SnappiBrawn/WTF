@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once "Connection.php";
 class rep {
     private $id;
@@ -39,7 +40,22 @@ class rep {
         return $this->name;
     }
 
-
+    public function doILike(){
+        $conn = Connection::getInstance();
+        if(isset($_SESSION["current_user"])){
+            $who = $_SESSION["current_user"];
+            $faves = explode(",",$conn->query("select users_Favourites from users where users_Name='$who'")->fetchColumn());
+            if(in_array($this->id,$faves)){
+                echo "fas";
+            }
+            else{
+                echo "far";
+            }
+        }
+        else{
+            echo "far";
+        }
+    }
     public function getOwner(){return $this->owner;}
     public function getTime(){return $this->time;}
     public function getMorals(){return $this->morals;}

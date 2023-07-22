@@ -72,7 +72,7 @@
         req.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
         req.onreadystatechange = function() {
             if(req.readyState == 4 && req.status == 200){
-                alert(req.responseText);
+                //pass
             }
         }
         req.send("id="+who+"&action="+action);
@@ -81,17 +81,7 @@
     <style>
         .content{
             margin-top:100px;
-        }
-
-        button > span {
-            color: red;
-            font-size:25px;
-        }
-
-        .btn, .btn:active, .btn:hover, .btn:focus {
-            background-color: transparent;
-        }
-        
+        }       
     </style>
   </head>
   <body onload='fetchRecipes("")'>

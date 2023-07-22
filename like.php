@@ -10,9 +10,11 @@ $likes = explode(",",$conn->query("select users_Favourites from users where user
 
 if($action == "add"){
     array_push($likes,$what);
+    $conn->query("update recipes set rep_Likes = rep_Likes+1 where rep_Id = '$what'");
 }
 else{
     $likes = array_diff($likes,array($what));
+    $conn->query("update recipes set rep_Likes = rep_Likes-1 where rep_Id = '$what'");
 }
 
 $likes = implode(",",$likes);

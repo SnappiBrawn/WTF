@@ -8,6 +8,7 @@ if(!isset($_GET["id"])){
 }
 else{
     $rep = new rep($_GET["id"]);
+    $idstring = "'".$rep->getId()."'";
 }
 
 ?>
@@ -56,34 +57,47 @@ else{
                 border: 2px solid darkorchid;
                 background-color: pink;
                 border-radius: 5px;
-                color: darkorchid;
                 cursor: pointer;
                 padding: 5px;
                 margin-left:55%; 
                 font-size: 2rem;
+                color:red
             }
-            .like:hover > span{
-                color: red;
-                transition-duration: 0.2s;
-                text-shadow: 0px 0px 5px red;
-            }
+            
         </style>
         <script>
-            function like(){
-                if(<?php echo $_SESSION["loggedin"];?>){
-                    //like and add recipe to faves
+            function liker(what){
+                <?php if(!isset($_SESSION['current_user'])){
+                        echo "alert('Oops! You need to be logged in to do that.');";
+                        echo "return;";
+                    }
+                ?>
+                var heart = document.querySelector(".like");
+                if(heart.querySelector("span").className == "far fa-heart"){
+                    heart.querySelector("span").className = "fas fa-heart";
+                    var action = "add";
                 }
                 else{
-                    document.querySelector("#login-modal").style.display = block;
+                    heart.querySelector("span").className = "far fa-heart";
+                    var action = "remove";
                 }
+                var req = new XMLHttpRequest();
+                req.open("POST", "like.php", true);
+                req.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+                req.onreadystatechange = function() {
+                    if(req.readyState == 4 && req.status == 200){
+                        //pass
+                    }
+                }
+                req.send("id="+what+"&action="+action);
             }
         </script>
     </head>
     <body>
         <div style="display: flex; padding:100 0 0 5%; font-size:3rem">
         <span class="back-arrow" onclick="history.back()">🔙</span>
-            <div class="like" onclick='like()'>
-            Add recipe to favourites&nbsp<span><i class="fas fa-heart"></i>&nbsp</span>
+            <div class="like" onclick="liker(<?php echo $idstring;?>)">
+            Add recipe to favourites&nbsp<span class='<?php $rep->doILike();?> fa-heart'>&nbsp</span>
             </div>
         </div>
         <?php if(isset($error)): ?>
