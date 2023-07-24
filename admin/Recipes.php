@@ -89,6 +89,8 @@ session_start();
                     </div>
                     <input type="text" placeholder="Search..." onkeyup="populate(this.value)">
                 </div>
+                <button class="btn btn-primary float-right mx-5 mb-2" onclick="window.location.href = 'RecipeShow.php'">Add New</button>
+                
             <table id="recipeTable" class="table table-bordered table-striped mx-auto">
                 <thead>
                     <tr>

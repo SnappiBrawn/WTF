@@ -18,6 +18,7 @@
   }
   .profile-pic{
     height: 50px;
+    border-radius: 50%;
   }
   .dropdown-toggle{
     cursor: pointer;
@@ -48,12 +49,12 @@
 <div class="container-fluid bg-dark">
     <div class="row custom-header">
         <div class="col-md-6 offset-md-3">
-            <h2>WTF</h2>
+            <h2><strong>W</strong>hat<strong>T</strong>o<strong>F</strong>ood</h2>
             <div class="dropdown options">
               <img src="<?php echo $_SESSION['display']?>" alt="User" class="profile-pic">
               <p class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['admin']?></p>
               <div class="dropdown-menu">
-                <p class="dropdown-item" onclick="window.location.href = 'EditAdmin.php'">Edit Info</p>
+                <p class="dropdown-item" onclick="window.location.href = 'EditInfo.php'">Edit Info</p>
                 <p class="dropdown-item" onclick="logout()">Log Out</p>
               </div>
             </div>
