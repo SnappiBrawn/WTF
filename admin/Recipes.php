@@ -4,12 +4,11 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Recipes</title>
+    <title>All Recipes</title>
     <style>
         .main{
-            overflow: hidden;
+            overflow-x: hidden;
         }
-
         thead th {
             background-color: #f8f9fa;
             font-weight: bold;
@@ -62,7 +61,7 @@ session_start();
                                     Actions
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <button class="dropdown-item" onclick="edit('${element[0]}')">Edit</button>
+                                    <button class="dropdown-item" onclick="window.location.href = 'RecipeShow.php?id=${element[0]}'">Edit</button>
                                     <button class="dropdown-item" onclick="remove('${element[0]}')">Delete</button>
                                 </div>
                             </div>
@@ -82,14 +81,14 @@ session_start();
         <?php include "utils/header.php" ?>
         <div class="row">
             <?php include "utils/Sidebar.php"?>
-            <main class="col-md-10 pt-4">
+            <main class="col-md-10 pt-4 vh-100">
                 <div class='input-group p-3'>
                 <div class="input-group-prepend">
                     <div class="input-group-text"><i class="fas fa-search"></i></div>
                     </div>
                     <input type="text" placeholder="Search..." onkeyup="populate(this.value)">
                 </div>
-                <button class="btn btn-primary float-right mx-5 mb-2" onclick="window.location.href = 'RecipeShow.php'">Add New</button>
+                <button class="btn btn-primary float-right mx-5 mb-2" onclick="window.location.href = 'RecipeShow.php?id='">Add New</button>
                 
             <table id="recipeTable" class="table table-bordered table-striped mx-auto">
                 <thead>

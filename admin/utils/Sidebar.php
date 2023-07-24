@@ -1,6 +1,7 @@
 <style>
-    .sidebar {
-        height: 86vh;
+    .sidebar{
+        min-height: 100vh;
+        overflow-y: hidden;
     }
     .nav-item{
         margin: 10px;

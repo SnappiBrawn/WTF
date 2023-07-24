@@ -7,7 +7,7 @@ session_start();
     <title>Proposals</title>
     <style>
         .main{
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         thead th {
@@ -21,8 +21,7 @@ session_start();
     </style>
     <script> 
         function remove(t){
-            var sure = confirm("Confirm deletion of Proposal "+t+"?");
-            if(sure){
+            if(confirm("Confirm deletion of Proposal "+t+"?")){
                 if(confirm("Are you reeeallly sure?")){
                     var req = new XMLHttpRequest();
                     var table = document.querySelector("tbody");
@@ -40,6 +39,18 @@ session_start();
                     alert('Yeah, probably was the better call.');
                 }
             }
+        }
+        function approve(id){
+            var req = new XMLHttpRequest();
+            req.open("POST", "approveProposal.php", true);
+            req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            req.onreadystatechange = function() {
+                if(req.readyState == 4 && req.status == 200) {
+                    alert(req.responseText);
+                    window.location.reload();
+                };
+            }
+            req.send("which="+id);
         }
         function populate(t){
             var req = new XMLHttpRequest();
@@ -62,8 +73,8 @@ session_start();
                                     Actions
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <button class="dropdown-item" onclick='view("${element[0]}")'>View</button>
-                                    <button class="dropdown-item" onclick='edit("${element[0]}")'>Approve</button>
+                                    <button class="dropdown-item" onclick='window.location.href="ProposalShow.php?id=${element[0]}"'>View</button>
+                                    <button class="dropdown-item" onclick='approve("${element[0]}")'>Approve</button>
                                     <button class="dropdown-item" onclick='remove("${element[0]}")'>Delete</button>
                                 </div>
                             </div>

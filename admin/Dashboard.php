@@ -7,7 +7,7 @@ session_start();
     <title>Dashboard</title>
     <style>
         .main{
-            overflow: hidden;
+            overflow-x: hidden;
         }
         .card{
             cursor: pointer;

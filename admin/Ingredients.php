@@ -7,7 +7,7 @@ session_start();
     <title>Ingredients</title>
     <style>
         .main{
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         thead th {
@@ -62,7 +62,7 @@ session_start();
                                     Actions
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <button class="dropdown-item" onclick="edit('${element[0]}')">Edit</button>
+                                    <button class="dropdown-item" onclick="window.location.href = 'IngredientShow.php?id=${element[0]}'">Edit</button>
                                     <button class="dropdown-item" onclick="remove('${element[0]}')">Delete</button>
                                 </div>
                             </div>
@@ -89,6 +89,7 @@ session_start();
                     </div>
                     <input type="text" placeholder="Search..." onkeyup="populate(this.value)">
                 </div>
+                <button class="btn btn-primary float-right mx-5 mb-2" onclick="window.location.href = 'IngredientShow.php?id='">Add New</button>
             <table id="recipeTable" class="table table-bordered table-striped mx-auto">
                 <thead>
                     <tr>

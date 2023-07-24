@@ -6,15 +6,16 @@
     text-align: center;
     z-index: 1;
     color:white;
+    
   }
   .options{
     display: flex;
     align-items: flex-end;
     gap:10px;
-    position: fixed;
+    position: absolute;
     top:0;
     right:0;
-    padding: 20px 50px;
+    margin-right: -300px;
   }
   .profile-pic{
     height: 50px;
