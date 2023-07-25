@@ -50,10 +50,10 @@ include_once("classes/rep.php");
 
             function renderRecipe(recipe){
                 if (recipe[4]=="1"){
-                    var sticker = `<img width="48" height="48" class="sticker" src="https://img.icons8.com/fluency/48/non-vegetarian-food-symbol.png" />`
+                    var sticker = `<img width="48" height="48" class="sticker" src="https://img.icons8.com/fluency/48/vegetarian-food-symbol.png" />`
                 }
                 else{
-                    var sticker = `<img width="48" height="48" class="sticker" src="https://img.icons8.com/fluency/48/vegetarian-food-symbol.png" />`
+                    var sticker = `<img width="48" height="48" class="sticker" src="https://img.icons8.com/fluency/48/non-vegetarian-food-symbol.png" />`
                     
                 }
                 if(recipe[10]=="1"){
