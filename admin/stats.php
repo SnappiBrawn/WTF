@@ -9,10 +9,12 @@ $conn = Connection::getInstance();
 $rcps = $conn->query("select count(*) from recipes;")->fetchColumn();
 $ings = $conn->query("select count(*) from ingredients;")->fetchColumn();
 $prcps = $conn->query("select count(*) from proposed_recipes;")->fetchColumn();
+$usrs = $conn->query("select count(*) from users;")->fetchColumn();
 
 $stats["recipes"] = $rcps;
 $stats["ingredients"] = $ings;
 $stats["proposals"] = $prcps;
+$stats["users"] = $usrs;
 
 echo json_encode($stats);
 

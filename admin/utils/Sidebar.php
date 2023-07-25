@@ -34,6 +34,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="Proposals.php">Proposals</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Users.php">Users</a>
+            </li>
         </ul>
     </div>
 </nav>

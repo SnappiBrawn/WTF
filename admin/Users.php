@@ -4,11 +4,12 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>All Recipes</title>
+    <title>All Users</title>
     <style>
         .main{
             overflow-x: hidden;
         }
+
         thead th {
             background-color: #f8f9fa;
             font-weight: bold;
@@ -20,7 +21,7 @@ session_start();
     </style>
     <script> 
         function remove(t){
-            var sure = confirm("Confirm deletion of recipe "+t+"?");
+            var sure = confirm("Confirm termination of User "+t+"?");
             if(sure){
                 if(confirm("Are you reeeallly sure?")){
                     var req = new XMLHttpRequest();
@@ -33,7 +34,7 @@ session_start();
                             window.location.reload();
                         };
                     }
-                    req.send("what=recipe&which="+t);
+                    req.send("what=users&which="+t);
                 }
                 else{
                     alert('Yeah, probably was the better call.')
@@ -51,18 +52,16 @@ session_start();
                     var recipes = JSON.parse(req.responseText);
                     recipes.forEach(element => {
                         table.innerHTML +=`<tr>
-                        <td>${element[0]}</td>
                         <td>${element[1]}</td>
-                        <td>${element[2]}</td>
-                        <td>${element[9]}</td>
+                        <td>${element[0]}</td>
+                        <td>${element[4].split(",").length-1}</td>
                         <td>
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Actions
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <button class="dropdown-item" onclick="window.location.href = 'RecipeShow.php?id=${element[0]}'">Edit</button>
-                                    <button class="dropdown-item" onclick="remove('${element[0]}')">Delete</button>
+                                    <button class="dropdown-item" onclick="remove('${element[0]}')">Remove</button>
                                 </div>
                             </div>
                         </td>
@@ -70,7 +69,7 @@ session_start();
                     });
                 };
             }
-            req.send("what=recipes&key="+t);
+            req.send("what=users&key="+t);
         }
     </script>
 </head>
@@ -81,22 +80,19 @@ session_start();
         <?php include "utils/header.php" ?>
         <div class="row">
             <?php include "utils/Sidebar.php"?>
-            <main class="col-md-10 pt-4 vh-100">
-                <div class='input-group p-3'>
+            <main class="col-md-10 pt-4">
+            <div class='input-group p-3'>
                 <div class="input-group-prepend">
                     <div class="input-group-text"><i class="fas fa-search"></i></div>
                     </div>
-                    <input type="text" placeholder="Search by name or owner" onkeyup="populate(this.value)">
+                    <input type="text" placeholder="Search by name or email" onkeyup="populate(this.value)">
                 </div>
-                <button class="btn btn-primary float-right mx-5 mb-2" onclick="window.location.href = 'RecipeShow.php?id='">Add New</button>
-                
             <table id="recipeTable" class="table table-bordered table-striped mx-auto">
                 <thead>
                     <tr>
-                        <th>Recipe ID</th>
-                        <th>Recipe Name</th>
-                        <th>Recipe Owner</th>
-                        <th>Recipe Likes</th>
+                        <th>User Name</th>
+                        <th>User Email</th>
+                        <th>User Submissions</th>
                         <th>Action</th>
                     </tr>
                 </thead>

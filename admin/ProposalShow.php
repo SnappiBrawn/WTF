@@ -55,7 +55,7 @@ $ing = json_encode($ing);
                         ['clean']
                     ]
                 },
-                placeholder: 'Enter your description here...',
+                placeholder: 'Enter recipe description here...',
             });
         }
         function removeFromSelection(ing){
@@ -169,12 +169,12 @@ $ing = json_encode($ing);
                         <div class="border rounded p-4">
                             <div class="form-group">
                                 <label for="recipeName">Recipe Name</label>
-                                <input type="text" class="form-control" id="recipeName" name="recipeName" required>
+                                <input type="text" class="form-control" id="recipeName" name="recipeName" disabled>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="prepTime">Preparation Time(in minutes)</label>
-                                    <input type="text" class="form-control" id="prepTime" name="prepTime" required>
+                                    <input type="text" class="form-control" id="prepTime" name="prepTime" disabled>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label class="d-block" for="vegetarian">Vegetarian</label>
@@ -204,11 +204,11 @@ $ing = json_encode($ing);
                             </div>
                             <div class="form-group">
                                 <label for="recipeImage">Recipe Image (Link)</label>
-                                <input type="text" class="form-control" id="recipeImage" name="recipeImage" required>
+                                <input type="text" class="form-control" id="recipeImage" name="recipeImage" disabled>
                             </div>
                             <div class="form-group">
                                 <label for="additionalImages">Additional Images (Up to 3 links, use space to separate them)</label>
-                                <input type="text" class="form-control" id="additionalImages" name="additionalImages" multiple>
+                                <input type="text" class="form-control" id="additionalImages" name="additionalImages" disabled>
                             </div>
                         </div>
                     </div>

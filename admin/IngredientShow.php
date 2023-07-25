@@ -56,7 +56,7 @@ $links = $res["6"];
                         ['clean']
                     ]
                 },
-                placeholder: 'Enter your description here...',
+                placeholder: 'Enter ingredient description here...',
             });
         }
         function submitForm(e){

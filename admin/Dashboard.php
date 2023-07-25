@@ -25,6 +25,8 @@ session_start();
                     document.querySelector("#recipeNos").innerHTML = stats['recipes'];
                     document.querySelector("#ingredientNos").innerHTML = stats['ingredients'];
                     document.querySelector("#proposedRecipeNos").innerHTML = stats['proposals'];
+                    document.querySelector("#userNos").innerHTML = stats['users'];
+                    
                 };
             }
             req.send();
@@ -78,26 +80,26 @@ session_start();
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-10">
+                                    <div class="col-md-9">
                                         <h2 class="card-title">Pending Recipe Proposals</h2>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3 text-center">
                                         <h1 id="proposedRecipeNos">0</h1>
                                     </div>
                                 </div>
                             </div>
                     </div>
-                        <div class="card m-4 bg-warning">
+                        <div class="card m-4 bg-warning" onclick="window.location.href = 'Users.php'">
                             <div class="card-header">
                                 Manage <span class="float-right"><i class="fas fa-arrow-right"></i></span>
                             </div>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-9">
-                                        <h2 class="card-title">Total Active Users</h2>
+                                        <h2 class="card-title">Total Registered Users</h2>
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <h1>0</h1>
+                                        <h1 id="userNos">0</h1>
                                     </div>
                                 </div>
                             </div>

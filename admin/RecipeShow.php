@@ -66,7 +66,7 @@ if($_GET['id']!==""){
                         ['clean']
                     ]
                 },
-                placeholder: 'Enter your description here...',
+                placeholder: 'Enter recipe description here...',
             });
         }
         function removeFromSelection(ing){

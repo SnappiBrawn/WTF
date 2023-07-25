@@ -4,7 +4,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Proposals</title>
+    <title>All Proposals</title>
     <style>
         .main{
             overflow-x: hidden;
@@ -46,7 +46,6 @@ session_start();
             req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             req.onreadystatechange = function() {
                 if(req.readyState == 4 && req.status == 200) {
-                    alert(req.responseText);
                     window.location.reload();
                 };
             }
@@ -99,7 +98,7 @@ session_start();
                 <div class="input-group-prepend">
                     <div class="input-group-text"><i class="fas fa-search"></i></div>
                     </div>
-                    <input type="text" placeholder="Search..." onkeyup="populate(this.value)">
+                    <input type="text" placeholder="Search by name or owner" onkeyup="populate(this.value)">
                 </div>
             <table id="recipeTable" class="table table-bordered table-striped mx-auto">
                 <thead>

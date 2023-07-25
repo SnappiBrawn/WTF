@@ -4,7 +4,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Ingredients</title>
+    <title>All Ingredients</title>
     <style>
         .main{
             overflow-x: hidden;
@@ -55,7 +55,7 @@ session_start();
                         <td>${element[0]}</td>
                         <td>${element[1]}</td>
                         <td>${element[3]}</td>
-                        <td>${element[6].split(" ").length}</td>
+                        <td>${element[6].split(" ")[0]===""?0:element[6].split(" ").length}</td>
                         <td>
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -87,7 +87,7 @@ session_start();
                 <div class="input-group-prepend">
                     <div class="input-group-text"><i class="fas fa-search"></i></div>
                     </div>
-                    <input type="text" placeholder="Search..." onkeyup="populate(this.value)">
+                    <input type="text" placeholder="Search by name or owner" onkeyup="populate(this.value)">
                 </div>
                 <button class="btn btn-primary float-right mx-5 mb-2" onclick="window.location.href = 'IngredientShow.php?id='">Add New</button>
             <table id="recipeTable" class="table table-bordered table-striped mx-auto">
