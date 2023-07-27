@@ -44,6 +44,9 @@
             <a class="nav-link" aria-current="page" href="ViewRecipes.php">All Recipes</a>
           </li>
           <li class="nav-item p-1 white">
+            <a class="nav-link" aria-current="page" href="ViewIngredients.php">All Ingredients</a>
+          </li>
+          <li class="nav-item p-1 white">
             <a class="nav-link" aria-current="page" href="SubmitRecipe.php">Submit A Recipe</a>
           </li>
           

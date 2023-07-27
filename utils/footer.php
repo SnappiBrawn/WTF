@@ -22,7 +22,10 @@
                     <a class="nav-link p-0" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link p-0" href="ViewRecipes.php">Recipes</a>
+                    <a class="nav-link p-0" href="ViewRecipes.php">All Recipes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link p-0" href="ViewIngredients.php">All Ingredients</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link p-0" href="SubmitRecipe.php">Submit A Recipe</a>
