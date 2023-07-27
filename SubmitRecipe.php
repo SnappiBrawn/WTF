@@ -1,6 +1,7 @@
 <!-- Submit a recipe page -->
 <?php 
     session_start();
+    if(isset($_SESSION["current_user"]))
     $user = $_SESSION["current_user"];
 ?>
 <!DOCTYPE html>
@@ -12,8 +13,6 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.snow.css">
         <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
-        <!-- Main Quill library -->
-        
         <script>
             function loadQuill(){
                 window.quill = new Quill('#description', {
@@ -39,6 +38,10 @@
             }
             function addToSelection(ing){
                 var dest = document.querySelector("#selectedIngredients");
+                for (var i=0; i<dest.children.length;i++){
+                    if(dest.children[i].id ==ing.target.getAttribute("value"))
+                        return;
+                }
                 dest.innerHTML+=`<li id="${ing.target.getAttribute("value")}" class="ingredient" onclick="removeFromSelection('${ing.target.getAttribute("value")}')">
                                         ${ing.target.innerHTML}
                                     </li>`
@@ -85,6 +88,7 @@
                 req.onreadystatechange = function() {
                     if(req.readyState == 4 && req.status == 200) {
                         alert(req.responseText);
+                        window.location.reload();
                     }
                 }
                 req.send("data="+JSON.stringify(submission));
@@ -115,7 +119,7 @@
                 <?php if(isset($_SESSION['current_user'])):?>
                 <h2 class="mb-4 text-center">Propose a New Recipe</h2>
                 <div class='alert alert-info'>
-                <h4 class="alert-heading text-center"><b>Note</b></h4>
+                <h4 class="alert-heading text-center"><b>Attention</b></h4>
                 <p><b>Submission of a new recipe does not guarantee immediate addition.</b> We at WTF strive to provide our visitors with the best content possible.
                     In order to achieve this, we have an ever-active team reviewing all your submissions.
                     Only after the team's approval will the recipe be listed and due credit given.
@@ -165,7 +169,9 @@
                         <label for="additionalImages">Additional Images (Up to 3 links, use space to separate them)</label>
                         <input type="text" class="form-control" id="additionalImages" name="additionalImages" multiple>
                     </div>
-                    <button type="submit" class="btn btn-primary mx-auto">Submit</button>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
                 </form>
                 <?php else:?>
                 <div class="text-center">
