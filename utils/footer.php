@@ -25,10 +25,7 @@
                     <a class="nav-link p-0" href="ViewRecipes.php">Recipes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link p-0" href="#adoptions">Submit A Recipe</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link p-0" href="#foundation">Submit An Ingredient</a>
+                    <a class="nav-link p-0" href="SubmitRecipe.php">Submit A Recipe</a>
                 </li>
                 </ul>
             </section>

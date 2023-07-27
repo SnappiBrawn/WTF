@@ -172,7 +172,12 @@ body{
   padding: 10px;
   cursor: pointer;
 }
-
+/* Recipe Card */
+.sticker{
+  position: absolute;
+  right:0;
+}
+/*  */
 /* footer styles */
 footer { 
   font-family: 'Montserrat', sans-serif;
@@ -200,5 +205,14 @@ footer {
 .footcontent {
   color: #E0E0E0;
 }
-/*  */
-  
+/* END */
+/* likes sticker */
+button > .fa-heart {
+  color: red;
+  font-size:25px;
+}
+
+.swap, .swap:active, .swap:hover, .swap:focus {
+  background-color: transparent;
+}
+/* END */

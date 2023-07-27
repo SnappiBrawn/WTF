@@ -71,7 +71,7 @@
         </fieldset>
       </form>
     </div>
-    <?php include("AllRecipes.php");?>
+    <?php include("allRecipes.php");?>
     <?php include("utils/footer.php"); ?>
   </body>
 </html>

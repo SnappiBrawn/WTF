@@ -41,14 +41,12 @@
             <a class="nav-link" aria-current="page" href="index.php">Home</a>
           </li>
           <li class="nav-item p-1 white">
-            <a class="nav-link" aria-current="page" href="ViewRecipes.php">Recipes</a>
+            <a class="nav-link" aria-current="page" href="ViewRecipes.php">All Recipes</a>
           </li>
           <li class="nav-item p-1 white">
-            <a class="nav-link" aria-current="page" href="#adoptions">Submit A Recipe</a>
+            <a class="nav-link" aria-current="page" href="SubmitRecipe.php">Submit A Recipe</a>
           </li>
-          <li class="nav-item p-1 white">
-            <a class="nav-link" aria-current="page" href="#foundation">Submit An Ingredient</a>
-          </li>
+          
           <li class="nav-item dropdown p-1 white">
           <?php if(!isset($_SESSION["loggedin"])):?>
             <button class="btn btn-outline-success" data-toggle="modal" data-target="#loginModal">Login</button>
@@ -56,6 +54,7 @@
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span> Hi, <?php echo $_SESSION["current_user"]; ?></span></a>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="Favourites.php">Favourites</a>
+              <a class="dropdown-item" href="Submissions.php">My Submissions</a>
               <a class="dropdown-item" href="#" onclick="logout()">Log Out</a>
             </div>
           <?php endif ?>
