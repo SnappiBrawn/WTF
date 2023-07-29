@@ -135,9 +135,11 @@
                             <label for="prepTime">Preparation Time(in minutes)</label>
                             <input type="text" class="form-control" id="prepTime" name="prepTime" required>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label class="d-block" for="vegetarian">Vegetarian</label>
-                            <input type="checkbox" id="vegetarian" name="vegetarian" checked="checked">
+                        <div class="form-group col-md-6 text-center">
+                        <label class="d-block " for="vegetarian"> Is Vegetarian?
+                            <input type="checkbox" id="vegetarian" class="tog-input" name="vegetarian" checked="checked">
+                            <div class="tog-display mx-auto"></div>
+                        </label>
                         </div>
                     </div>
                     <div class="form-group">

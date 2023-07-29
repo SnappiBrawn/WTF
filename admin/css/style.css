@@ -1,0 +1,38 @@
+/* veg toggle */
+.d-block{
+    --h: 5vh;
+    --w: calc(var(--h) * 2);
+    --br: calc(var(--h) / 2);
+  }
+  .tog-input{
+    display: none;
+  }
+  .tog-display{
+    position: relative;
+    background-color: red;
+    height: var(--h);
+    width: var(--w);
+    border-radius: var(--br);
+    transition-duration: 100ms;
+    cursor: pointer;
+  }
+  .tog-input:checked ~ .tog-display{
+    background-color: green;
+  }
+  .tog-display::after{
+    content: '';
+    position: absolute;
+    left:2px;
+    top: 2px;
+    height: calc(var(--h) - 4px);
+    width: calc(var(--h) - 4px);
+    border-radius: var(--br);
+    box-shadow: 0px 0px 10px black;
+    background-color: white;
+    transition: transform 0.2s;
+  }
+  
+  .tog-input:checked ~ .tog-display::after{
+    transform: translateX(var(--h));
+  }
+  

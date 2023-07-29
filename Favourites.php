@@ -15,10 +15,10 @@
     <script>
       function renderRecipe(recipe){
         if (recipe[4]=="1"){
-            var sticker = `<img width="48" height="48" class="sticker" src="https://img.icons8.com/fluency/48/non-vegetarian-food-symbol.png" />`
+            var sticker = `<img width="48" height="48" class="sticker" src="https://img.icons8.com/fluency/48/vegetarian-food-symbol.png" />`
         }
         else{
-            var sticker = `<img width="48" height="48" class="sticker" src="https://img.icons8.com/fluency/48/vegetarian-food-symbol.png" />`
+            var sticker = `<img width="48" height="48" class="sticker" src="https://img.icons8.com/fluency/48/non-vegetarian-food-symbol.png" />`
             
         }
         var canvas = document.querySelector("#myrecipe");
@@ -73,11 +73,6 @@
         var req = new XMLHttpRequest();
         req.open("POST", "like.php", true);
         req.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
-        req.onreadystatechange = function() {
-            if(req.readyState == 4 && req.status == 200){
-                //pass
-            }
-        }
         req.send("id="+who+"&action="+action);
     }
     </script>

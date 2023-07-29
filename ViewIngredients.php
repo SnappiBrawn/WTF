@@ -16,7 +16,7 @@ include_once("classes/rep.php");
                 var canvas = document.querySelector(".all-ingredients");
                 var newIngredient = `<div class='col-sm-3 my-2'>
                     <div class="card">
-                    <img class="card-img-top" src=${ing[5]} alt='${ing[1]}' style="height:200px; object-fit:cover;">
+                    <img class="card-img-top" src='${ing[5]}' alt='${ing[1]}' style="height:200px; object-fit:cover;">
                     <div class="card-body">
                         <h5 class="card-title">${ing[1]}</h5>
                         <p class="card-text">${ing[4].slice(0,100)+"..."}</p>
@@ -39,7 +39,6 @@ include_once("classes/rep.php");
                 req.onreadystatechange = function() {
                     if(req.readyState == 4 && req.status == 200){
                         ingredients =JSON.parse(req.responseText);
-                        console.log(req.responseText);
                         document.querySelector(".all-ingredients").innerHTML = "";
                         for(var i=0;i<ingredients.length;i++){
                             renderIngredient(ingredients[i]);

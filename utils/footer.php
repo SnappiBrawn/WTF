@@ -30,6 +30,9 @@
                 <li class="nav-item">
                     <a class="nav-link p-0" href="SubmitRecipe.php">Submit A Recipe</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link p-0" href="FAQ.php">FAQ</a>
+                </li>
                 </ul>
             </section>
             <section class="col-lg-5 m-auto">
