@@ -250,4 +250,46 @@ button > .fa-heart {
 .tog-input:checked ~ .tog-display::after{
   transform: translateX(var(--h));
 }
-
+/* Ingredient Page */
+.back-arrow{
+  color: darkgrey;
+}
+.back-arrow:hover{
+  color: grey;
+  cursor: pointer;
+}
+.content{
+  border: 1px lightgreen solid;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px lightgreen;
+}
+.content img {
+  width: 100%;
+  object-fit:cover;
+  object-position: center;
+  height: 20em;
+  padding: 5%;
+  border-radius: 30px;
+  overflow: hidden;
+}
+.main-content{
+ padding: 3% 5%;
+}
+.main-content a{
+  color: red;
+}
+.content-description{
+  padding: 3%;
+}
+/* FAQ Page */
+.faq-container {
+  margin: 100px auto 10px auto;
+  padding: 20px;
+}
+button{
+  background-color: transparent;
+}
+button:focus{
+  outline: none !important;
+  box-shadow: none !important; 
+}

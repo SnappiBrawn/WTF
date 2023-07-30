@@ -9,21 +9,45 @@
         req.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
         req.onreadystatechange = function() {
             if(req.readyState == 4 && req.status == 200){
-                if(req.responseText==""){
-                    alert("Congratulations! You are now registered "+uname);
-                    window.location.reload();
+                if(req.responseText[0]=="V"){
+                    document.querySelector("#submitter").style.display = 'none';
+                    document.querySelector("#verifier").style.display = 'block';
                 }
                 else{
-                    var error = document.querySelector("#registration-error");
-                    error.style.display = "block";
-                    setTimeout(() => {
-                        error.style.display="none";                        
-                    }, 5000);
-                    error.innerHTML = req.responseText;
+                    var err = document.querySelector("#registration-error");
+                    err.style.display="block";
+                    err.innerHTML = req.responseText;
+
                 }
             };
         }
         req.send("uname="+uname+"&pword="+pword+"&email="+email);
+        
+    }
+    
+    function verify(e){
+        e.preventDefault();
+        email = document.querySelector("#otp").value;
+        var req = new XMLHttpRequest();
+        req.open("POST", "utils/verifyUser.php", true);
+        req.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+        req.onreadystatechange = function() {
+            if(req.readyState == 4 && req.status == 200){
+                if(req.responseText[0]=="U"){
+                    var err = document.getElementById("registration-error");
+                    err.style.display="block";
+                    err.style.backgroundColor = 'lightgreen';
+                    err.innerHTML = req.responseText;
+                    window.location.reload();
+                }
+                else{
+                    var err = document.getElementById("registration-error");
+                    err.style.display="block";
+                    err.innerHTML = req.responseText;
+                }
+            };
+        }
+        req.send("code="+email+"&uname="+uname);
     }
 
 </script>
@@ -38,6 +62,16 @@
         border-radius: 3px;
         padding: 5px;
     }
+    #verifier{
+        display:none;
+        gap: 5px;
+        text-align: center;
+    }
+    #verifier > input{
+        margin: auto;
+        text-align: center;
+        width: 10%;
+    }
 </style>
 
 
@@ -51,7 +85,6 @@
         </div>
       <div class="modal-header mx-auto">
         <h2 style='font-size:3rem'>SIGN UP</h2>
-        <!-- configure error message inside span, also make it look presentable -->
       </div>
       <span id="registration-error"></span>
       <div class="modal-body">
@@ -69,8 +102,16 @@
                 <input type="email" class="form-control" id="email" placeholder="Email">
             </div>
             <br style="font-size:3rem">
+            
             <div class="mx-auto" style="text-align: center;">
-                <button class="btn btn-outline-success" onclick="register(event)">Register</button>
+                <div id='verifier'>
+                    Enter the OTP sent to your email<br>
+                    <input type='text' id="otp" placeholder="....."><br>
+                    <button class="btn btn-outline-success" onclick="verify(event)">Verify</button>
+                </div>
+                <div id='submitter'>
+                    <button class="btn btn-outline-success" onclick="register(event)">Register</button>
+                </div>
             </div>
         </form>
       </div>

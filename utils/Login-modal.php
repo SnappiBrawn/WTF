@@ -12,6 +12,12 @@
                     alert("Welcome "+uname);
                     window.location.reload();
                 }
+                else if(req.responseText=="User not verified."){
+                    var err = document.getElementById("error");
+                    err.style.display="block";
+                    err.innerHTML = req.responseText;
+                    document.getElementById("verify-widget").style.display="flex";
+                }
                 else{
                     var error = document.querySelector("#error");
                     document.querySelector("#uname").value="";
@@ -38,7 +44,31 @@
         }
         req.send();
     }
-
+    function recheck(e){
+        e.preventDefault();
+        var uname = document.querySelector("#uname-activate").value;
+        var otp = document.querySelector("#otp-activate").value;
+        var req = new XMLHttpRequest();
+        req.open("POST", "utils/verifyUser.php", true);
+        req.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+        req.onreadystatechange = function() {
+            if(req.readyState == 4 && req.status == 200){
+                if(req.responseText[0]=="U"){
+                    var err = document.getElementById("error");
+                    err.style.display="block";
+                    err.style.backgroundColor = 'lightgreen';
+                    err.innerHTML = req.responseText;
+                    window.location.reload();
+                }
+                else{
+                    var err = document.getElementById("error");
+                    err.style.display="block";
+                    err.innerHTML = req.responseText;
+                }
+            };
+        }
+        req.send("code="+otp+"&uname="+uname);
+    }
 </script>
 <style>
     #error{
@@ -47,6 +77,13 @@
         background-color: #fca9a9;
         border-radius: 3px;
         padding: 5px;
+    }
+    #verify-widget{
+        display: none;
+        flex-direction: column;
+        margin: auto;
+        width: 50%;
+
     }
 </style>
 
@@ -76,6 +113,11 @@
             <div class="mx-auto" style="text-align:center">
                 <button class="btn btn-outline-success" onclick="login(event)">Login</button>
                 <button type=button class="btn btn-outline-primary" data-toggle="modal" data-target="#registerModal" data-dismiss="modal">Sign-up</button>
+            </div>
+            <div id='verify-widget'>
+                <input type='text' id='uname-activate' placeholder="Username"></input>
+                <input type='text' id='otp-activate' placeholder="OTP"></input>
+                <button class='btn btn-outline-primary' onclick='recheck(event)'>Verify</button>
             </div>
         </form>
       </div>

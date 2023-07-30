@@ -66,7 +66,7 @@
         }
     </script>
     <style>
-        .content{
+        .submissions-body{
             margin-top:100px;
         }
         tbody, thead{
@@ -77,7 +77,7 @@
   <body onload="populate('')">
     <?php include 'utils/styles.php' ?>
     <?php include 'utils/header.php' ?>
-    <div class="container content">
+    <div class="container submissions-body">
         <h2 class="text-center"><u>My Submissions</u></h2>
         <div class="alert alert-info">
         <h4 class="alert-heading text-center"><b>Note</b></h4>

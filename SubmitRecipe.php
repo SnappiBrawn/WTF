@@ -33,7 +33,7 @@
                 });
             }
             function removeFromSelection(ing){
-                var element = document.querySelector('#'+ing);
+                var element = document.getElementById(ing);
                 element.parentNode.removeChild(element);
             }
             function addToSelection(ing){
@@ -44,7 +44,10 @@
                 }
                 dest.innerHTML+=`<li id="${ing.target.getAttribute("value")}" class="ingredient" onclick="removeFromSelection('${ing.target.getAttribute("value")}')">
                                         ${ing.target.innerHTML}
-                                    </li>`
+                                    </li>`;
+                document.querySelector("#ingredientSearch").value="";
+                getResults('');
+                document.querySelector("#ingredientSearch").focus();
             }
             function getResults(target){
                 if(target.length<1){
@@ -68,30 +71,32 @@
                 req.send("searchkey="+target);
             }
             function submitForm(e){
-                e.preventDefault();
-                var Name = e.target.querySelector("#recipeName").value;
-                var Time = e.target.querySelector("#prepTime").value;
-                var User = <?php echo "'$user';";?>
-                var Morals = e.target.querySelector("#vegetarian").checked?1:0;
-                var Desc = window.quill.root.innerHTML;
-                var Image = e.target.querySelector("#recipeImage").value;
-                var Gallery = e.target.querySelector("#additionalImages").value;
-                var Ing = "";
-                var a = e.target.querySelector("#selectedIngredients").children;
-                for(var i=0; i<a.length;i++){
-                    Ing+=a[i].id+",";
-                }
-                var submission = Array({Name,Time,User,Morals,Desc,Image,Gallery,Ing});
-                var req = new XMLHttpRequest();
-                req.open("POST", "proposeRecipe.php", true);
-                req.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
-                req.onreadystatechange = function() {
-                    if(req.readyState == 4 && req.status == 200) {
-                        alert(req.responseText);
-                        window.location.reload();
+                if(!alert('Confirm Submission?')){
+                    e.preventDefault();
+                    var Name = e.target.querySelector("#recipeName").value;
+                    var Time = e.target.querySelector("#prepTime").value;
+                    var User = <?php echo "'$user';";?>
+                    var Morals = e.target.querySelector("#vegetarian").checked?1:0;
+                    var Desc = window.quill.root.innerHTML;
+                    var Image = e.target.querySelector("#recipeImage").value;
+                    var Gallery = e.target.querySelector("#additionalImages").value;
+                    var Ing = "";
+                    var a = e.target.querySelector("#selectedIngredients").children;
+                    for(var i=0; i<a.length;i++){
+                        Ing+=a[i].id+",";
                     }
+                    var submission = Array({Name,Time,User,Morals,Desc,Image,Gallery,Ing});
+                    var req = new XMLHttpRequest();
+                    req.open("POST", "proposeRecipe.php", true);
+                    req.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+                    req.onreadystatechange = function() {
+                        if(req.readyState == 4 && req.status == 200) {
+                            alert(req.responseText);
+                            window.location.reload();
+                        }
+                    }
+                    req.send("data="+JSON.stringify(submission));
                 }
-                req.send("data="+JSON.stringify(submission));
             }
         </script>
         <style>

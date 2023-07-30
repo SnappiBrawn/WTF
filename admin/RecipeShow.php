@@ -70,7 +70,7 @@ if($_GET['id']!==""){
             });
         }
         function removeFromSelection(ing){
-            var element = document.querySelector('#'+ing);
+            var element = document.getElementById(ing);
             element.parentNode.removeChild(element);
         }
         function addToSelection(ing){
@@ -81,7 +81,10 @@ if($_GET['id']!==""){
                 }
                 dest.innerHTML+=`<li id="${ing.target.getAttribute("value")}" class="ingredient" onclick="removeFromSelection('${ing.target.getAttribute("value")}')">
                                         ${ing.target.innerHTML}
-                                    </li>`
+                                    </li>`;
+                document.querySelector("#ingredientSearch").value="";
+                getResults('');
+                document.querySelector("#ingredientSearch").focus();
         }
         function getResults(target){
             if(target.length<1){

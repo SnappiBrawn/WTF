@@ -21,36 +21,7 @@ else{
         <?php include 'utils/styles.php' ?>
         <?php include 'utils/header.php' ?>
         <style>
-            .back-arrow{
-                color: darkgrey;
-            }
-            .back-arrow:hover{
-                color: grey;
-                cursor: pointer;
-            }
-            .content{
-                border: 1px lightgreen solid;
-                border-radius: 10px;
-                box-shadow: 0px 0px 5px lightgreen;
-            }
-            .content img {
-                width: 100%;
-                object-fit:cover;
-                object-position: center;
-                height: 20em;
-                padding: 5%;
-                border-radius: 30px;
-                overflow: hidden;
-            }
-            .main-content{
-               padding: 3% 5%;
-            }
-            .main-content a{
-                color: red;
-            }
-            .content-description{
-                padding: 3%;
-            }
+            
         </style>
     
     </head>
@@ -72,11 +43,16 @@ else{
                     <h4>
                         <ul>
                         <?php 
-                        $items = explode(" ", $ing->getLink());
-                        foreach (array_slice($items,0,4) as $i){
-                            $con = Connection::getInstance();
-                            $name = $con->query("select rep_Name, rep_Id from recipes where rep_Id='".$i."'")->fetch();
-                            echo "<li><a href=recipe.php?id=".$name[1].">".$name[0]."</a></li>";
+                        $items = explode(",", $ing->getLink());
+                        if (sizeof($items)>1){
+                            foreach (array_slice($items,0,4) as $i){
+                                $con = Connection::getInstance();
+                                $name = $con->query("select rep_Name, rep_Id from recipes where rep_Id='".$i."'")->fetch();
+                                echo "<li><a href=recipe.php?id=".$name[1].">".$name[0]."</a></li>";
+                            }
+                        }
+                        else{
+                            echo "<p style='color:black'>No related recipes yet</p>";
                         }
                         ?>
                         </ul>

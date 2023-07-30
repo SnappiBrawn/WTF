@@ -73,11 +73,12 @@
         var req = new XMLHttpRequest();
         req.open("POST", "like.php", true);
         req.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+
         req.send("id="+who+"&action="+action);
     }
     </script>
     <style>
-        .content{
+        .favess{
             margin-top:100px;
         }       
     </style>
@@ -85,7 +86,7 @@
   <body onload='fetchRecipes("")'>
     <?php include 'utils/styles.php' ?>
     <?php include 'utils/header.php' ?>
-    <div class="container content">
+    <div class="container favess">
         <h2 class="text-center"><u>My Favourites</u></h2>
         <div class="input-group p-2" style="font-size:1.3rem;">
             <div class="input-group-prepend ">

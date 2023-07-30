@@ -15,8 +15,13 @@
             echo "Invalid user details";
         }
         else{
-            $_SESSION['current_user'] = $user->getName();
-            $_SESSION["loggedin"] = "true";
+            if($user->isVerified()){
+                $_SESSION['current_user'] = $user->getName();
+                $_SESSION["loggedin"] = "true";
+            }
+            else{
+                echo "User not verified.";
+            }
         }
     }
 ?>

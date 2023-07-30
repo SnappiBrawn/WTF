@@ -1,8 +1,6 @@
-<!-- recipes page -->
-<?php 
-include_once("classes/Connection.php");
-include_once("classes/rep.php");
-
+<!-- FAQ Page -->
+<?php
+  session_start();
 ?>
 <html>
     <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -10,23 +8,6 @@ include_once("classes/rep.php");
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="https://fonts.googleapis.com/css?family=Poppins:400,800" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-        <style>
-            body{
-                background-image: ;
-            }
-            .faq-container {
-                max-width: 600px;
-                margin: 100px auto 10px auto;
-                padding: 20px;
-            }
-            button{
-                background-color: transparent;
-            }
-            button:focus{
-                outline: none !important;
-                box-shadow: none !important; 
-            }
-        </style>
     </head>
     <body>
         <?php include "utils/styles.php"?>

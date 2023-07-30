@@ -12,7 +12,7 @@ class user{
         if (gettype($res)!=="boolean"){
             $this->email = $res[0];
             $this->username = $res[1];
-            $this->faves = explode(",",$res[3]);
+            $this->faves = explode(" ",$res[3]);
         }
         else{
             echo "Incorrect Username or Password";
@@ -22,5 +22,16 @@ class user{
     public function getName(){return $this->username;}
     public function getFaves(){return $this->faves;}
     public function getEmail(){return $this->email;}
+
+    public function isVerified(){
+        $con = Connection::getInstance();
+        $res = $con->query('select * from inactivate_users where username="'.$this->username.'"')->fetchall();
+        if(sizeof($res)>0){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
 }
 ?>
