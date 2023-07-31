@@ -21,7 +21,6 @@
                 else{
                     var error = document.querySelector("#error");
                     document.querySelector("#uname").value="";
-                    document.querySelector("#pword").value="";
                     error.style.display = "block";
                     setTimeout(() => {
                         error.style.display="none";                        
