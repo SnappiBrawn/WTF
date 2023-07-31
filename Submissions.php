@@ -35,14 +35,15 @@
         }
         function populate(t){
             var req = new XMLHttpRequest();
-            var table = document.querySelector("tbody");
-            table.innerHTML = "";
             req.open("POST", "getSubmissions.php", true);
             req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             req.onreadystatechange = function() {
                 if(req.readyState == 4 && req.status == 200) {
                     var recipes = JSON.parse(req.responseText);
-                    recipes.forEach(element => {
+                    
+                    var table = document.querySelector("#table0");
+                    table.innerHTML = "";
+                    recipes[0].forEach(element => {
                         table.innerHTML +=`<tr>
                         <td>${element[0]}</td>
                         <td>${element[1]}</td>
@@ -57,6 +58,19 @@
                                     <button class="dropdown-item" onclick='remove("${element[0]}")'>Delete</button>
                                 </div>
                             </div>
+                        </td>
+                    </tr>`;
+                    });
+
+                    var table = document.querySelector("#table1");
+                    table.innerHTML = "";
+                    recipes[1].forEach(element => {
+                        table.innerHTML +=`<tr>
+                        <td>${element[0]}</td>
+                        <td>${element[1]}</td>
+                        <td>${element[4]==="1"?"Yes":"No"}</td>
+                        <td>
+                            <button class="btn btn-outline-primary" onclick='window.location.href = "recipe.php?id=${element[0]}"'>View</button>
                         </td>
                     </tr>`;
                     });
@@ -78,13 +92,13 @@
     <?php include 'utils/styles.php' ?>
     <?php include 'utils/header.php' ?>
     <div class="container submissions-body">
-        <h2 class="text-center"><u>My Submissions</u></h2>
         <div class="alert alert-info">
         <h4 class="alert-heading text-center"><b>Note</b></h4>
             <p>Hey there! We appreciate your enthusiam to add to our ever-growing list of recipes. 
                 While your recipes await approval, they'll be put on a waiting queue. Below is a list of submissions you've made along with their Token numbers.
                 For any queries regarding your recipe status, do reach out to us at support.wtf@gmail.com with your submission' stoken number.</p>
         </div>
+        <h1 class='text-center'>Pending Submissions</h1>
             <div class='input-group p-3'>
                 <div class="input-group-prepend">
                     <div class="input-group-text"><i class="fas fa-search"></i></div>
@@ -100,10 +114,24 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="table0">
                     <!-- will be populated by populate() -->
                 </tbody>
             </table>
+        <h1 class='pt-3 text-center'>Listed Submissions</h1>
+        <table id="recipeTable2" class="table table-bordered table-striped mx-auto">
+            <thead>
+                <tr> 
+                    <th>Token</th>
+                    <th>Recipe Name</th>
+                    <th>Vegetarian</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="table1">
+                <!-- will be populated by populate() -->
+            </tbody>
+        </table>
     </div>
     <?php include 'utils/footer.php' ?>
   </body>
