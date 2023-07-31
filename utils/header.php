@@ -58,6 +58,7 @@
             <div class="dropdown-menu">
               <a class="dropdown-item" href="Favourites.php">Favourites</a>
               <a class="dropdown-item" href="Submissions.php">My Submissions</a>
+              <a class="dropdown-item" href="UserSettings.php">Settings</a>
               <a class="dropdown-item" href="#" onclick="logout()">Log Out</a>
             </div>
           <?php endif ?>

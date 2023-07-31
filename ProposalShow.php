@@ -7,6 +7,12 @@ $conn = Connection::getInstance();
 
 $qry = 'select * from proposed_recipes where rep_Token="'.$_GET['id'].'"';
 $res = $conn->query($qry)->fetch();
+
+if(gettype($res)=="boolean"){
+    echo "<h1 align='center'>You aren't supposed to be here!</h1>";
+    exit(0);
+}
+
 $ing_string = explode(",",$res[6]);
 $ing = [];
 foreach ($ing_string as $i){
