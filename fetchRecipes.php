@@ -17,7 +17,7 @@ else{
 }
 
 if($items == ""){
-    $res = $conn->query("select * from recipes order by rep_Likes desc");
+    $res = $conn->query("select * from recipes order by rep_Likes desc limit 8");
     foreach($res as $rep){
         array_push($list,$rep);
     }
@@ -26,7 +26,7 @@ else{
     // compare for each recipe, if its ingredients have any of the given ingredients
     $items = explode(",", $_POST["fetchfor"]);
     foreach($items as $item){
-        $qry = "select * from recipes where FIND_IN_SET('".$item."',rep_Ingredients) order by rep_Likes desc";
+        $qry = "select * from recipes where FIND_IN_SET('".$item."',rep_Ingredients) order by rep_Likes desc LIMIT 8";
         $res=$conn->query($qry);
         foreach($res as $rep){
             array_push($list,$rep);

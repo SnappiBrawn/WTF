@@ -42,7 +42,7 @@
 </style>
 <script>
   function remove(id){
-    var element = document.querySelector("#"+id);
+    var element = document.getElementById(id);
     element.parentNode.removeChild(element);
     fetchRecipes();
   }
