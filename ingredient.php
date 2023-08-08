@@ -43,12 +43,11 @@ else{
                     <h4>
                         <ul>
                         <?php 
-                        $items = explode(",", $ing->getLink());
-                        if (sizeof($items)>1){
-                            foreach (array_slice($items,0,4) as $i){
-                                $con = Connection::getInstance();
-                                $name = $con->query("select rep_Name, rep_Id from recipes where rep_Id='".$i."'")->fetch();
-                                echo "<li><a href=recipe.php?id=".$name[1].">".$name[0]."</a></li>";
+                        $con = Connection::getInstance();
+                        $items = $con->query("select rep_Name,rep_Id from recipes where FIND_IN_SET('".$ing->getId()."', rep_Ingredients) limit 4");
+                        if ($items->rowCount() >0){
+                            foreach ($items as $i){
+                                echo "<li><a href=recipe.php?id=".$i[1].">".$i[0]."</a></li>";
                             }
                         }
                         else{

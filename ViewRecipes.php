@@ -64,7 +64,7 @@ include_once("classes/rep.php");
                 }
                 var canvas = document.querySelector(".all-recipes");
                 var newRecipe = `<div class='col-sm-3'>
-                    <div class="card">
+                    <div class="card my-3">
                     <div class="sticker">
                         ${sticker}
                     </div>
@@ -116,7 +116,7 @@ include_once("classes/rep.php");
                 background-image: ;
             }
             .recipe-search{
-                margin: 100px auto;
+                margin: 120px auto 30px auto;
                 width: 40%;
             }
             .filters{
@@ -143,10 +143,10 @@ include_once("classes/rep.php");
             </div>
             <div class="filters">
                 <b>Filters:</b>
-                <label for="nonveg-filter">Vegetarian Only</label>
-                <input type="checkbox" name="nonveg-filter" id="nonveg-filter" onchange="filter_validate(event)"></input>
-                <label for="veg-filter">Non-Vegetarian Only</label>
+                <label for="veg-filter">Vegetarian Only</label>
                 <input type="checkbox" name="veg-filter" id="veg-filter" onchange="filter_validate(event)"></input>
+                <label for="nonveg-filter">Non-Vegetarian Only</label>
+                <input type="checkbox" name="nonveg-filter" id="nonveg-filter" onchange="filter_validate(event)"></input>
             </div>
         </div>
         <div class="container">
