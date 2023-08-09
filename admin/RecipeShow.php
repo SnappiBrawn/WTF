@@ -129,8 +129,13 @@ if($_GET['id']!==""){
             req.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
             req.onreadystatechange = function() {
                 if(req.readyState == 4 && req.status == 200) {
-                    alert(req.responseText);
-                    window.location.href="Recipes.php";
+                    if(req.responseText=="Request Successful."){
+                        alert(req.responseText);
+                        window.location.href="Recipes.php";
+                    }
+                    else{
+                        alert("Internal Error. kindly recheck inputs for invalid characters.");
+                    }
                 }
             }
             req.send("type=<?php echo $type;?>&data="+JSON.stringify(submission));
