@@ -34,13 +34,12 @@ else{
                 border-radius: 10px;
                 box-shadow: 0px 0px 5px lightgreen;
             }
-            .content img {
+            .cover-img {
                 width: 100%;
+                border-radius: 30px;
                 object-fit:cover;
                 object-position: center;
-                height: 20em;
-                padding: 5%;
-                border-radius: 30px;
+                height: 25em;
                 overflow: hidden;
             }
             .main-content{
@@ -64,6 +63,14 @@ else{
                 color:red
             }
             
+            .carousel-item{
+                box-shadow: inset 0px 0px 100px black;
+            }
+            .carousel-item > img{
+                height: 25em;
+                object-fit:contain;
+            }
+
         </style>
         <script>
             function liker(what){
@@ -105,10 +112,10 @@ else{
         <?php else: ?>
         <div class="container content">
             <div class="row">
-                <div class="col-sm-4">
-                    <img src=<?php echo $rep->getImg()." alt='".$rep."'";?> >
+                <div class="col-sm-5">
+                    <img class="cover-img" src=<?php echo $rep->getImg()." alt='".$rep."'";?> >
                 </div>
-                <div class="col-sm-8 main-content">
+                <div class="col-sm-7 main-content">
                     <h1><?php echo $rep?></h1>
                     <h3>Posted By: <?php echo $rep->getOwner();?></h3>
                     <h3>Approximate Preparation Time: <?php echo $rep->getTime();?>mins</h3>
@@ -119,8 +126,10 @@ else{
                         $items = explode(",", $rep->getIngredients());
                         foreach ($items as $i){
                             $con = Connection::getInstance();
-                            $name = $con->query("select ing_Name, ing_Id from ingredients where ing_Id='".$i."'")->fetch();
-                            echo "<li><a href=ingredient.php?id=".$name[1].">".$name[0]."</a></li>";
+                            if($i!==""){
+                                $name = $con->query("select ing_Name, ing_Id from ingredients where ing_Id='".$i."'")->fetch();
+                                echo "<li><a href=ingredient.php?id=".$name[1].">".$name[0]."</a></li>";
+                            }
                         }
                         ?>
                         </ul>
@@ -136,11 +145,11 @@ else{
                     for ($index = 0; $index < count($media)-1; $index++) {
                         ?>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src=<?php echo "recipes/".$media[$index]." alt=".$media[$index];?>>
+                            <img class="d-block w-100" src=<?php echo $media[$index]." alt=".$media[$index];?>>
                         </div>
                     <?php }?>
                         <div class="carousel-item active">
-                            <img class="d-block w-100" src=<?php echo "recipes/".$media[$index]." alt=".$media[$index];?>>
+                            <img class="d-block w-100" src=<?php echo $media[$index]." alt=".$media[$index];?>>
                         </div>
                 </div>
                     <?php if (count($media) > 1) { ?>

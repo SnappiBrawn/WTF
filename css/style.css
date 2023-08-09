@@ -262,16 +262,11 @@ button > .fa-heart {
   border: 1px lightgreen solid;
   border-radius: 10px;
   box-shadow: 0px 0px 5px lightgreen;
-}
-.content img {
-  width: 100%;
-  object-fit:cover;
-  object-position: center;
-  height: 20em;
   padding: 5%;
-  border-radius: 30px;
-  overflow: hidden;
 }
+
+
+
 .main-content{
  padding: 3% 5%;
 }

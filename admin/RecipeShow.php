@@ -117,7 +117,7 @@ if($_GET['id']!==""){
             var Desc = window.quill.root.innerHTML;
             var Image = e.target.querySelector("#recipeImage").value;
             var Gallery = e.target.querySelector("#additionalImages").value;
-            var Likes = 0;
+            var Likes = <?php echo '`'.$res[9].'`'?>;
             var Ing = "";
             var a = e.target.querySelector("#selectedIngredients").children;
             for(var i=0; i<a.length;i++){
